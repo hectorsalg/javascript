@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nacionalidade</title>
+    <link rel="stylesheet" href="estilos/style.css">
+</head>
+<body>
+    <main>
+        <h1>Origem</h1>
+        <label for="ipais">Qual seu pais?</label>
+        <input type="text" name="pais" id="ipais" placeholder="|" autocomplete="off">
+        <input class="envio" type="button" value="Enviar" onclick="pais()">
+        <div id="imsg">
+        </div>
+    </main>
+    <script>
+        function pais() {
+            var pais = window.document.getElementById('ipais')
+            var msg = window.document.getElementById('imsg')
+            if (pais.value == 'Brasil') {
+                msg.innerHTML = '<p>Você é Brasileiro!</p>'
+            } else {
+                msg.innerHTML = '<p>Você é Estrangeiro!</p>'
+            }
+            
+        }
+    </script>
+</body>
+</html>
