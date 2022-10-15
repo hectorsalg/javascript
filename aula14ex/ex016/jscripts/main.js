@@ -1,34 +1,31 @@
 function contar() {
-    var inicio = Number((document.getElementById('iinicio')).value)
-    var fim = Number(document.getElementById('ifim').value)
-    var passo = Number(document.getElementById('ipasso').value)
-    var res = document.getElementById('ires')
-    res.innerHTML = ''
-    if (inicio == '' || fim == ''){
+    let inicio = document.getElementById('iinicio')
+    let fim = document.getElementById('ifim')
+    let passo = document.getElementById('ipasso')
+    let res = document.getElementById('ires')
+    
+    if (inicio.value.length == 0 || fim.value.length == 0 || passo.value.length == 0){
         res.innerHTML = 'Impossível contar!'
-    } else if (passo == '' || passo == 0){
-        alert('Passo iválido! Contando PASSO 1')
-        passo = 1
-        if (inicio > fim){
-            for (inicio; inicio >= fim; inicio -= passo) {
-                res.innerHTML += `${inicio}👉`
-            }
-        } else {
-            for (inicio; inicio <= fim; inicio += passo) {
-                res.innerHTML += `${inicio}👉`
-            }
-        }
-        res.innerHTML += `🚩`
     } else {
-        if (inicio > fim){
-            for (inicio; inicio >= fim; inicio -= passo) {
-                res.innerHTML += `${inicio}👉`
+        res.innerHTML = 'Contando: <br>'
+        let i = Number(inicio.value)
+        let f = Number(fim.value)
+        let p = Number(passo.value)
+        if (p <= 0) {
+            window.alert('Passo inválido! Considerando PASSO 1')
+            p = 1
+        }
+        if (i < f) {
+            // Contagem crescente
+            for (let count = i; count >= f; count += p) {
+                res.innerHTML += `${count}c \u{1F449}`
             }
-        } else {
-            for (inicio; inicio <= fim; inicio += passo) {
-                res.innerHTML += `${inicio}👉`
+        } else{
+            // Contagem decrescente
+            for (let count = i; count >= f; count -= p) {
+                res.innerHTML += `${count}c \u{1F449}`
             }
         }
-        res.innerHTML += `🚩`
+        res.innerHTML += `\u{1F3c1}`
     }
 }
