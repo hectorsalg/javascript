@@ -4,18 +4,30 @@ function contar() {
     var passo = Number(document.getElementById('ipasso').value)
     var res = document.getElementById('ires')
     res.innerHTML = ''
-    if (inicio == '' || inicio > fim){
+    if (inicio == '' || fim == ''){
         res.innerHTML = 'Impossível contar!'
     } else if (passo == '' || passo == 0){
         alert('Passo iválido! Contando PASSO 1')
         passo = 1
-        for (inicio; inicio <= fim; inicio += passo) {
-            res.innerHTML += `${inicio}👉`
+        if (inicio > fim){
+            for (inicio; inicio >= fim; inicio -= passo) {
+                res.innerHTML += `${inicio}👉`
+            }
+        } else {
+            for (inicio; inicio <= fim; inicio += passo) {
+                res.innerHTML += `${inicio}👉`
+            }
         }
         res.innerHTML += `🚩`
     } else {
-        for (inicio; inicio <= fim; inicio += passo) {
-            res.innerHTML += `${inicio}👉`
+        if (inicio > fim){
+            for (inicio; inicio >= fim; inicio -= passo) {
+                res.innerHTML += `${inicio}👉`
+            }
+        } else {
+            for (inicio; inicio <= fim; inicio += passo) {
+                res.innerHTML += `${inicio}👉`
+            }
         }
         res.innerHTML += `🚩`
     }
