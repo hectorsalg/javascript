@@ -1,49 +1,22 @@
-function verificar() {
-    var data = new Date()
-    var ano = data.getFullYear()
-    var fano = document.getElementById('iano')
-    var res = document.querySelector('div#ires')
-    if (fano.value.length == 0 || Number(fano.value) > ano) {
-        window.alert('[ERRO] Verifique os dados e tente novamente!')
+function contar() {
+    var inicio = Number((document.getElementById('iinicio')).value)
+    var fim = Number(document.getElementById('ifim').value)
+    var passo = Number(document.getElementById('ipasso').value)
+    var res = document.getElementById('ires')
+    res.innerHTML = ''
+    if (inicio == '' || inicio > fim){
+        res.innerHTML = 'Impossível contar!'
+    } else if (passo == '' || passo == 0){
+        alert('Passo iválido! Contando PASSO 1')
+        passo = 1
+        for (inicio; inicio <= fim; inicio += passo) {
+            res.innerHTML += `${inicio}👉`
+        }
+        res.innerHTML += `🚩`
     } else {
-        var fsex = document.getElementsByName('radsex')
-        var idade = ano - Number(fano.value)
-        var gênero = ''
-        var img = document.createElement('img')
-        img.setAttribute('id', 'foto')
-        if (fsex[0].checked) {
-            gênero = 'Homem'
-            if (idade >= 0 && idade < 10) {
-                // Criança
-                img.setAttribute('src', 'imagens/criança-menino.jpg')
-            } else if (idade < 21) {
-                // Jovem
-                img.setAttribute('src', 'imagens/jovem-homem.jpg')
-            } else if (idade < 50) {
-                //Adulto
-                img.setAttribute('src', 'imagens/adulto-homem.jpg')
-            } else {
-                // Idoso
-                img.setAttribute('src', 'imagens/idoso.jpg')
-            }
-        } else if (fsex[1].checked) {
-            gênero = 'Mulher'
-            if (idade >= 0 && idade < 10) {
-                // Criança
-                img.setAttribute('src', 'imagens/criança-menina.jpg')
-            } else if (idade < 21) {
-                // Jovem
-                img.setAttribute('src', 'imagens/jovem-mulher.jpg')
-            } else if (idade < 50) {
-                //Adulto
-                img.setAttribute('src', 'imagens/adulto-mulher.jpg')
-            } else {
-                // Idoso
-                img.setAttribute('src', 'imagens/idosa.jpg')
-            }
+        for (inicio; inicio <= fim; inicio += passo) {
+            res.innerHTML += `${inicio}👉`
         }
-        res.style.textAlign = 'center'
-        res.innerHTML = `Dectectamos ${gênero} com ${idade} anos.`
-        res.appendChild(img)
-        }
+        res.innerHTML += `🚩`
+    }
 }
