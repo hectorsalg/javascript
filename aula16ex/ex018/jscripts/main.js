@@ -1,8 +1,9 @@
 let lista = []
+let res = document.getElementById('ires')
+
 function adicionar() {
     let num = document.getElementById('inum')
     let tab = document.getElementById('ianali')
-    let res = document.getElementById('ires')
     let n = Number(num.value)
 
     res.innerHTML = ''
@@ -18,7 +19,6 @@ function adicionar() {
 }
 
 function finalizar() {
-    let res = document.getElementById('ires')
     let grandeza = lista.sort()
     let soma = () => {
         let total = 0
@@ -27,7 +27,6 @@ function finalizar() {
         }
         return total
     }
-
     let media = () => {
         let total = 0
         for (let num = 0; num < lista.length; num++) {
